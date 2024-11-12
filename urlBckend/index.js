@@ -12,13 +12,13 @@ app.use(cors());
 app.use(express.json());
 
 express.urlencoded({ extended: false })
-// https://short-url-hk9t.onrender.com
+
 app.use('/', urlRoute)
 
 const MONGO_URI = process.env.MONGO_URI
 
 const corsOptions = {
-  origin: 'https://short-url-hk9t.onrender.com/',
+  origin: 'https://short-url-f9qi.onrender.com',
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
 };
