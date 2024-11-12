@@ -7,37 +7,37 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
   const [userURL, setUserURL] = useState("");
   const [shortURL, setShortURL] = useState("");
- 
+  const apiURL = process.env.REACT_APP_API_URL;
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevents form submission from refreshing the page
 
-    fetch('http://localhost:8000/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ url: userURL }), 
-    })
-      .then(response => response.json())
-      .then(data => {
-        setShortURL(data.id);
-      })
-      .catch(error => console.error('Error shortening URL:', error));
-  };
+  //   fetch('http://localhost:8000/', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({ url: userURL }), 
+  //   })
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       setShortURL(data.id);
+  //     })
+  //     .catch(error => console.error('Error shortening URL:', error));
+  // };
 
-//   fetch('https://short-url-hk9t.onrender.com/', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify({ url: userURL }), 
-//   })
-//     .then(response => response.json())
-//     .then(data => {
-//       setShortURL(data.id);
-//     })
-//     .catch(error => console.error('Error shortening URL:', error));
-// };
+  fetch(`${apiURL}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ url: userURL }), 
+  })
+    .then(response => response.json())
+    .then(data => {
+      setShortURL(data.id);
+    })
+    .catch(error => console.error('Error shortening URL:', error));
+};
 
 
   const handleCopy = () => {

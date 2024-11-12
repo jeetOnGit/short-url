@@ -17,6 +17,14 @@ app.use('/', urlRoute)
 
 const MONGO_URI = process.env.MONGO_URI
 
+const corsOptions = {
+  origin: 'https://short-url-hk9t.onrender.com/',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type'],
+};
+
+app.use(cors(corsOptions));
+
 mongoose.connect((MONGO_URI),{ 
   useNewUrlParser: true, 
   useUnifiedTopology: true 
