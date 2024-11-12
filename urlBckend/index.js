@@ -8,16 +8,25 @@ const cors = require('cors');
 const app = express();
 const port = 8000;
 
-// Set up CORS middleware before using any routes
-const corsOptions = {
-  origin: 'https://short-url-frontend-q232.onrender.com',
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type'],
-};
+const allowedOrigins = ['https://short-url-frontend-q232.onrender.com', 'http://localhost:3000'];
 
-app.use(cors(corsOptions)); // Use CORS settings globally
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+  credentials: true, 
+};
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
+
 app.use(express.json());
-app.use(express.urlencoded({ extended: true })); // Fix to parse URL-encoded data
+app.use(express.urlencoded({ extended: false }));
 
 // Use routes
 app.use('/', urlRoute);
@@ -34,23 +43,23 @@ mongoose.connect(MONGO_URI, {
 app.get('/:shortId', async (req, res) => {
   const shortId = req.params.shortId;
   try {
-    // Find URL by shortID and push a new click timestamp
+
     const entry = await URL.findOneAndUpdate(
       { shortID: shortId },
       {
         $push: {
-          userClicks: { timestamps: Date.now() }, // Push new click timestamp
+          userClicks: { timestamps: Date.now() },
         },
       },
-      { new: true } // Ensure updated document is returned
+      { new: true }
     );
 
     if (!entry) {
-      // If no matching entry, return 404
+ 
       return res.status(404).send('URL not found');
     }
 
-    // If URL found, redirect to the original URL
+
     return res.redirect(entry.redirectURL);
   } catch (error) {
     console.error('Error fetching URL entry:', error);
