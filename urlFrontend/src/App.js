@@ -7,37 +7,43 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
   const [userURL, setUserURL] = useState("");
   const [shortURL, setShortURL] = useState("");
-  const apiURL = process.env.REACT_APP_API_URL;
+  
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevents form submission from refreshing the page
+    e.preventDefault(); 
 
-  //   fetch('http://localhost:8000/', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({ url: userURL }), 
-  //   })
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       setShortURL(data.id);
-  //     })
-  //     .catch(error => console.error('Error shortening URL:', error));
-  // };
+    // fetch('https://short-url-3cjn.onrender.com/', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({ url: userURL }), 
+    // })
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     setShortURL(data.id);
+    //     // console.log(data);
+        
+    //   })
+    //   .catch(error => console.error('Error shortening URL:', error));
+    
 
-  fetch(`${apiURL}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ url: userURL }), 
-  })
-    .then(response => response.json())
-    .then(data => {
-      setShortURL(data.id);
+
+    fetch('http://localhost:8000/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ url: userURL }), 
     })
-    .catch(error => console.error('Error shortening URL:', error));
-};
+      .then(response => response.json())
+      .then(data => {
+        setShortURL(data.id);
+        // console.log(data);
+        
+      })
+      .catch(error => console.error('Error shortening URL:', error));
+  };
+
 
 
   const handleCopy = () => {
@@ -87,7 +93,7 @@ function App() {
               className="w-[60%] pl-2 py-[12px] focus:outline-none text-black"
             />
             <button
-              type="submit" // Mark as submit button to trigger onSubmit
+              type="submit" 
               className="btn bg-[#21fda8] text-[#0F162A] font-semibold px-4 py-3"
             >
               Generate
@@ -97,7 +103,7 @@ function App() {
           <div className="getData text-center mt-5">
             {shortURL && (
               <div className="userlink">
-                <p>Your shortened URL: <a href={shortURL} target="_blank" rel='noreferrer' className="copy-text">http://localhost:8000/{shortURL}</a></p>
+                <p>Your shortened URL: <a href={shortURL} target="_blank" rel='noreferrer' className="copy-text">https://short-url-3cjn.onrender.com/{shortURL}</a></p>
                 <button onClick={handleCopy}>
                   <i className="fa-solid fa-copy" />
                 </button>
