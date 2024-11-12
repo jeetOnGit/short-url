@@ -1,20 +1,28 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 const urlSchema = new mongoose.Schema({
-    shortID:{
+    shortID: {
         type: String,
-        required:true,
-        unique:true
+        required: true,
+        unique: true
     },
-    redirectURL:{
+    redirectURL: {
         type: String,
-        required:true,
+        required: true,
     },
-    userClicks:[{ timestamps : {type : Number} }]
+    // Each click will have a timestamp stored as a Date object
+    userClicks: [
+        { 
+            timestamps: {
+                type: Date,
+                default: Date.now 
+            }
+        }
+    ]
 }, 
-{timestamps : true}
-)
+{ timestamps: true }  // This will add createdAt and updatedAt fields automatically
+);
 
-const URL = mongoose.model("url", urlSchema)
+const URL = mongoose.model("URL", urlSchema);
 
-module.exports = URL
+module.exports = URL;
