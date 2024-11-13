@@ -11,7 +11,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault(); 
 
-    fetch('https://short-url-3cjn.onrender.com/', {
+    fetch('https://short-url-3mjf.onrender.com', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
