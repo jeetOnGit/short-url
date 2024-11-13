@@ -22,8 +22,15 @@ const corsOptions = {
   allowedHeaders: ['Content-Type'],
   credentials: true, 
 };
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
+app.use(cors());
+app.options('*', cors());
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    next();
+});
+// app.options('*', cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
