@@ -11,6 +11,7 @@ const port = 8000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
 // Use routes
 app.use('/', urlRoute);
@@ -23,7 +24,7 @@ mongoose.connect(MONGO_URI, {
 })
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('Error connecting to MongoDB:', err));
-app.use(cors());
+
 
 app.get('/:shortId', async (req, res) => {
   const shortId = req.params.shortId;
