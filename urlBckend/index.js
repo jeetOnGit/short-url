@@ -8,7 +8,7 @@ const cors = require('cors');
 const app = express();
 const port = 8000;
 
-const allowedOrigins = ['https://short-url-frontend-q232.onrender.com', 'http://localhost:3000', 'https://short-url-3cjn.onrender.com'];
+const allowedOrigins = ['https://short-url-frontend-eiks.onrender.com', 'http://localhost:3000'];
 
 const corsOptions = {
   origin: function (origin, callback) {
