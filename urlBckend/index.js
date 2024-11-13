@@ -8,7 +8,7 @@ const cors = require('cors');
 const app = express();
 const port = 8000;
 
-<<<<<<< HEAD
+
 const allowedOrigins = ['https://short-url-frontend-eiks.onrender.com', 'http://localhost:3000'];
 
 const corsOptions = {
@@ -23,7 +23,6 @@ const corsOptions = {
   allowedHeaders: ['Content-Type'],
   credentials: true, 
 };
-app.use(cors());
 app.options('*', cors());
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -32,9 +31,6 @@ app.use((req, res, next) => {
     next();
 });
 // app.options('*', cors(corsOptions));
-=======
->>>>>>> 09cc509ad195e8e79da4b025c505d6d03871319d
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
