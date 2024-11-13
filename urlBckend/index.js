@@ -31,6 +31,10 @@ app.use((req, res, next) => {
     next();
 });
 // app.options('*', cors(corsOptions));
+<<<<<<< HEAD
+=======
+
+>>>>>>> 78cd3d2a85d99483dc2bccde0293ed9c62bb2822
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
