@@ -8,6 +8,7 @@ const cors = require('cors');
 const app = express();
 const port = 8000;
 
+<<<<<<< HEAD
 const allowedOrigins = ['https://short-url-frontend-eiks.onrender.com', 'http://localhost:3000'];
 
 const corsOptions = {
@@ -31,9 +32,12 @@ app.use((req, res, next) => {
     next();
 });
 // app.options('*', cors(corsOptions));
+=======
+>>>>>>> 09cc509ad195e8e79da4b025c505d6d03871319d
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
 // Use routes
 app.use('/', urlRoute);
@@ -46,6 +50,7 @@ mongoose.connect(MONGO_URI, {
 })
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('Error connecting to MongoDB:', err));
+
 
 app.get('/:shortId', async (req, res) => {
   const shortId = req.params.shortId;
