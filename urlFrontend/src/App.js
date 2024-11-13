@@ -20,9 +20,7 @@ function App() {
     })
       .then((response) => response.json())
       .then(data => {
-        
-        console.log(data);
-        
+        setShortURL(data.id)
       })
       .catch(error => console.error('Error shortening URL:', error));
     
