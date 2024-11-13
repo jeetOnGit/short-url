@@ -11,7 +11,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault(); 
 
-    fetch('https://short-url-3mjf.onrender.com', {
+    fetch('', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -24,22 +24,6 @@ function App() {
       })
       .catch(error => console.error('Error shortening URL:', error));
     
-
-
-    // fetch('http://localhost:8000/', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({ url: userURL }), 
-    // })
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     setShortURL(data.id);
-    //     // console.log(data);
-        
-    //   })
-    //   .catch(error => console.error('Error shortening URL:', error));
   };
 
 

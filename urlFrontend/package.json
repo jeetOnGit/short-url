@@ -45,5 +45,5 @@
   "devDependencies": {
     "tailwindcss": "^3.4.14"
   },
-  "proxy": "https://short-url-3mjf.onrender.com"
+  "proxy": ""
 }

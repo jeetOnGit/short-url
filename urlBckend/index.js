@@ -9,20 +9,20 @@ const app = express();
 const port = 8000;
 
 
-const allowedOrigins = ['https://short-url-frontend-eiks.onrender.com', 'http://localhost:3000'];
+// const allowedOrigins = ['https://short-url-frontend-eiks.onrender.com', 'http://localhost:3000'];
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type'],
-  credentials: true, 
-};
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   methods: ['GET', 'POST', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type'],
+//   credentials: true, 
+// };
 app.options('*', cors());
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -31,12 +31,6 @@ app.use((req, res, next) => {
     next();
 });
 // app.options('*', cors(corsOptions));
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> cfe37cf32b718c971ed1b96abcfa8310c8229741
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
