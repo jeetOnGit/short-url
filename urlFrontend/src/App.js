@@ -66,13 +66,13 @@ function App() {
         </header>
 
         <main>
-          <form className="w-[700px] mx-auto text-center" onSubmit={handleSubmit}>
+          <form className="w-[700px] mx-auto text-center max-[778px]:w-[500px] max-[520px]:w-[350px]" onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Enter your URL"
               value={userURL}
               onChange={(e) => setUserURL(e.target.value)}
-              className="w-[60%] pl-2 py-[12px] focus:outline-none text-black"
+              className="w-[80%] pl-2 py-[12px] focus:outline-none text-black max-[520px]:w-[60%]"
             />
             <button
               type="submit" 
