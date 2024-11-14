@@ -11,7 +11,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault(); 
 
-    fetch('', {
+     fetch('https://short-url-backend-vx4y.onrender.com/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
