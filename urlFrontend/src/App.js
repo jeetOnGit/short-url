@@ -72,7 +72,7 @@ function App() {
               placeholder="Enter your URL"
               value={userURL}
               onChange={(e) => setUserURL(e.target.value)}
-              className="w-[80%] pl-2 py-[12px] focus:outline-none text-black max-[520px]:w-[60%]"
+              className="w-[80%] pl-2 py-[12px] focus:outline-none text-black max-[520px]:w-[100%] max-[520px]:mb-3"
             />
             <button
               type="submit" 
