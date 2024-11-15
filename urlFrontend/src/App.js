@@ -3,7 +3,10 @@ import "./App.css";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+<<<<<<< HEAD
 import { ScaleLoader } from 'react-spinners';
+=======
+>>>>>>> f4dfd709125d75bf0eda7c07a7ed1cfd6c013822
 import ScaleLoader from "react-spinners/ScaleLoader";
 
 function App() {
