@@ -35,7 +35,7 @@ function App() {
   };
 
   return (
-    <div className="App bg-[#0F162A] h-screen text-white">
+    <div className="App bg-[#0F162A] h-screen text-white px-2">
       <ToastContainer />
 
       <div className="container mx-auto">
