@@ -3,14 +3,19 @@ import "./App.css";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ScaleLoader } from 'react-spinners';
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 function App() {
   const [userURL, setUserURL] = useState("");
   const [shortURL, setShortURL] = useState("");
+  const [loader, setLoader] = useState(false)
+  const [color, setColor] = useState("#21fda8")
+  
   
   const handleSubmit = (e) => {
     e.preventDefault(); 
-
+    setLoader(true)
     fetch('https://short-url-backend-vx4y.onrender.com/', {
       method: 'POST',
       headers: {
@@ -22,7 +27,10 @@ function App() {
       .then(data => {
         setShortURL(data.id)
       })
-      .catch(error => console.error('Error shortening URL:', error));
+      .catch(error => console.error('Error shortening URL:', error))
+      .finally(() =>{
+        setLoader(false)
+      })
     
   };
 
@@ -66,13 +74,13 @@ function App() {
         </header>
 
         <main>
-          <form className="w-[700px] mx-auto text-center max-[778px]:w-[500px] max-[520px]:w-[350px]" onSubmit={handleSubmit}>
+          <form className="w-[700px] mx-auto text-center max-[778px]:w-[500px] max-[520px]:w-[300px]" onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Enter your URL"
               value={userURL}
               onChange={(e) => setUserURL(e.target.value)}
-              className="w-[80%] pl-2 py-[12px] focus:outline-none text-black max-[520px]:w-[60%]"
+              className="w-[80%] pl-2 py-[12px] focus:outline-none text-black max-[520px]:w-[100%] max-[520px]:mb-3"
             />
             <button
               type="submit" 
@@ -82,16 +90,24 @@ function App() {
             </button>
           </form>
 
+            {loader && (<ScaleLoader className='text-center mt-4 w-full'
+            color={color}
+            loading='true'
+            size={150}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />)}
+
           <div className="getData text-center mt-5">
-            {shortURL && (
-              <div className="userlink">
-                <p>Your shortened URL: <a href={shortURL} target="_blank" rel='noreferrer' className="copy-text">https://short-url-3cjn.onrender.com/{shortURL}</a></p>
-                <button onClick={handleCopy}>
-                  <i className="fa-solid fa-copy" />
-                </button>
-              </div>
+            { shortURL && (
+             <div className="userlink">
+             <p>Your shortened URL: <a href={shortURL} target="_blank" rel='noreferrer' className="copy-text">https://short-url-3cjn.onrender.com/{shortURL}</a></p>
+             <button onClick={handleCopy} className="bg-[#21fda8] py-2 px-3 mt-2">
+               <i className="fa-solid fa-copy text-[1.5rem]" />
+             </button>
+           </div>
             )}
-            {/* <h4>Total clicks : </h4> */}
+            
           </div>
         </main>
 
