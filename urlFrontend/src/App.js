@@ -100,7 +100,7 @@ function App() {
           <div className="getData text-center mt-5">
             { shortURL && (
              <div className="userlink">
-             <p>Your shortened URL: <a href={shortURL} target="_blank" rel='noreferrer' className="copy-text">https://short-url-3cjn.onrender.com/{shortURL}</a></p>
+             <p>Your shortened URL: <a href={shortURL} target="_blank" rel='noreferrer' className="copy-text">https://short-url-backend-vx4y.onrender.com/{shortURL}</a></p>
              <button onClick={handleCopy} className="bg-[#21fda8] py-2 px-3 mt-2">
                <i className="fa-solid fa-copy text-[1.5rem]" />
              </button>
